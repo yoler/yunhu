@@ -1,0 +1,34 @@
+<view class="container">
+    <swiper class="swiper"
+        indicator-dots="{{indicatorDots}}"
+        vertical="{{vertical}}"
+        autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}"
+        bindanimationfinish="bindanimationfinish">
+        <block wx:for="{{list}}" wx:key="*this">
+          <swiper-item>
+            <view class="swiper-item">
+                <view class="swiper-item-image">
+                    <image mode="aspectFill" src="{{item.urls.regular}}" />
+                    <view class="mask"></view>
+                </view>
+                <view class="content">
+                    <text class="title">{{item.data.content}}</text>
+                    <view class="tag-box">
+                        <text class="tag-item" wx:for="{{item.data.matchTags}}" wx:key="*this">{{item}}</text>
+                    </view>
+                    <text class="author">{{item.data.origin.author}} - 《{{item.data.origin.title}}》</text>
+                    <view class="ad" wx:if="{{index % 4 == 0 && index !== 0}}">
+                        <ad unit-id="adunit-6302bcc311fe8b40"></ad>
+                    </view>
+                </view>
+            </view>
+          </swiper-item>
+        </block>
+    </swiper>
+    <view class="bottom">
+        <text bindtap="switchHome">诗词</text>
+        <text bindtap="switchSentence">短句</text>
+        <text bindtap="switchPhoto">壁纸</text>
+    </view>
+</view>
+

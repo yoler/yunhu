@@ -1,0 +1,31 @@
+<view class="container">
+    <swiper class="swiper"
+        indicator-dots="{{indicatorDots}}"
+        vertical="{{vertical}}"
+        autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}"
+        bindanimationfinish="bindanimationfinish">
+        <block wx:for="{{list}}" wx:key="*this">
+          <swiper-item>
+            <view class="swiper-item">
+                <view class="swiper-item-image">
+                    <image mode="aspectFill" src="{{item.urls.regular}}" />
+                    <view class="mask"></view>
+                </view>
+                <view class="content">
+                    <text class="title">{{item.data.hitokoto}}</text>
+                    <text class="author">{{item.data.from_who || '佚名'}} - 《{{item.data.from}}》</text>
+                    <view class="ad" wx:if="{{index % 2 == 0 && index !== 0}}">
+                        <ad unit-id="adunit-c60c8d2193b1aa75"></ad>
+                    </view>
+                </view>
+            </view>
+          </swiper-item>
+        </block>
+    </swiper>
+    <view class="bottom">
+        <text bindtap="switchHome">诗词</text>
+        <text bindtap="switchSentence">短句</text>
+        <text bindtap="switchPhoto">壁纸</text>
+    </view>
+</view>
+
