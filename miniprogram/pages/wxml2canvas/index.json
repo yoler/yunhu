@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "wxml-to-canvas": "wxml-to-canvas"
-  },
-  "navigationStyle": "custom"
-}

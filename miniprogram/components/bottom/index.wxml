@@ -1,0 +1,5 @@
+<view class="bottom">
+    <text bindtap="switchHome" class="{{active == 0 ? 'active' : ''}}">诗词</text>
+    <text bindtap="switchSentence" class="{{active == 1 ? 'active' : ''}}">短句</text>
+    <text bindtap="switchPhoto" class="{{active == 2 ? 'active' : ''}}">壁纸</text>
+</view>

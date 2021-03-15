@@ -8,7 +8,7 @@
           <swiper-item>
             <view class="swiper-item">
                 <view class="swiper-item-image">
-                    <image mode="aspectFill" src="{{item.urls.regular}}" />
+                    <image mode="aspectFill" src="{{item.url}}" />
                     <view class="mask"></view>
                 </view>
                 <view class="content">
@@ -17,7 +17,11 @@
                         <text class="tag-item" wx:for="{{item.data.matchTags}}" wx:key="*this">{{item}}</text>
                     </view>
                     <text class="author">{{item.data.origin.author}} - 《{{item.data.origin.title}}》</text>
-                    <view class="ad" wx:if="{{index % 4 == 0 && index !== 0}}">
+                    <view class="menu-box">
+                        <view data-data="{{item.data}}" bindtap="copy">复制</view>
+                        <view data-data="{{item.data}}" bindtap="share">分享</view>
+                    </view>
+                    <view class="ad" wx:if="{{index % 3 == 0 && index !== 0}}">
                         <ad unit-id="adunit-6302bcc311fe8b40"></ad>
                     </view>
                 </view>
@@ -25,10 +29,7 @@
           </swiper-item>
         </block>
     </swiper>
-    <view class="bottom">
-        <text bindtap="switchHome">诗词</text>
-        <text bindtap="switchSentence">短句</text>
-        <text bindtap="switchPhoto">壁纸</text>
-    </view>
+    <bottom type="0"/>
+    <canvas class="shareCanvas" style='height: {{canvasHeight}}px' canvas-id="shareCanvas"></canvas>
 </view>
 

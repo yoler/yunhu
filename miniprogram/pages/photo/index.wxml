@@ -12,10 +12,6 @@
           </swiper-item>
         </block>
     </swiper>
-    <view class="bottom">
-        <text bindtap="switchHome">诗词</text>
-        <text bindtap="switchSentence">短句</text>
-        <text bindtap="switchPhoto">壁纸</text>
-    </view>
+    <bottom type="2"/>
 </view>
 

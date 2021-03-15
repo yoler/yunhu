@@ -1,5 +1,0 @@
-<!--miniprogram/pages/wxml2canvas/index.wxml-->
-<video class="video" src="{{src}}">
-  <wxml-to-canvas class="widget"></wxml-to-canvas>
-</video>
-<image src="{{src}}" style="width: {{width}}px; height: {{height}}px"></image>

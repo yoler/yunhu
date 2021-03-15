@@ -5,30 +5,33 @@
   align-items: center;
   box-sizing: border-box;
 } 
-
-.bottom{
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.4);
-    height: 70px;
+.menu-box{
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
+    margin: 16px 0;
 }
-.bottom >text{
-    display: block; 
+
+.menu-box view{
+    margin: 0 12px;
+    padding: 10px 30px;
+    border-radius: 50px;
     font-size: 14px;
-    height: 100%;
-    line-height: 46px;
-    padding: 0 20px;
-    color: #fff;
+    background: rgba(255, 255, 255, 0.3);
+    color: #000;
 }
 .ad{
-  margin: 20px 16px 0;
+  margin: 50px 16px 0;
   border-radius: 4px;
   overflow: hidden;
+}
+
+.shareCanvas{
+  position: fixed;
+  width: 400px;
+  top: -100000px;
+  left: 0;
+  border-radius: 20px;
 }
 
 button {

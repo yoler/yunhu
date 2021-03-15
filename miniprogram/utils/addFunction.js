@@ -1,25 +1,60 @@
-// pages/databaseGuide/databaseGuide.js
+// pages/addFunction/addFunction.js
 
-const app = getApp()
+const code = `// 云函数入口函数
+exports.main = async (event, context) => {
+  console.log(event)
+  console.log(context)
+  return {
+    sum: event.a + event.b
+  }
+}`
 
 Page({
 
   data: {
-    step: 1,
-    counterId: '',
-    openid: '',
-    count: null,
-    queryResult: '',
+    result: '',
+    canIUseClipboard: wx.canIUse('setClipboardData'),
   },
 
   onLoad: function (options) {
-    if (app.globalData.openid) {
-      this.setData({
-        openid: app.globalData.openid
-      })
-    }
+
   },
 
+  copyCode: function() {
+    wx.setClipboardData({
+      data: code,
+      success: function () {
+        wx.showToast({
+          title: '复制成功',
+        })
+      }
+    })
+  },
+
+  testFunction() {
+    wx.cloud.callFunction({
+      name: 'sum',
+      data: {
+        a: 1,
+        b: 2
+      },
+      success: res => {
+        wx.showToast({
+          title: '调用成功',
+        })
+        this.setData({
+          result: JSON.stringify(res.result)
+        })
+      },
+      fail: err => {
+        wx.showToast({
+          icon: 'none',
+          title: '调用失败',
+        })
+        console.error('[云函数] [sum] 调用失败：', err)
+      }
+    })
+  },
   onAdd: function () {
     const db = wx.cloud.database()
     db.collection('counters').add({
@@ -135,59 +170,5 @@ Page({
     }
   },
 
-  nextStep: function () {
-    // 在第一步，需检查是否有 openid，如无需获取
-    if (this.data.step === 1 && !this.data.openid) {
-      wx.cloud.callFunction({
-        name: 'login',
-        data: {},
-        success: res => {
-          app.globalData.openid = res.result.openid
-          this.setData({
-            step: 2,
-            openid: res.result.openid
-          })
-        },
-        fail: err => {
-          wx.showToast({
-            icon: 'none',
-            title: '获取 openid 失败，请检查是否有部署 login 云函数',
-          })
-          console.log('[云函数] [login] 获取 openid 失败，请检查是否有部署云函数，错误信息：', err)
-        }
-      })
-    } else {
-      const callback = this.data.step !== 6 ? function() {} : function() {
-        console.group('数据库文档')
-        console.log('https://developers.weixin.qq.com/miniprogram/dev/wxcloud/guide/database.html')
-        console.groupEnd()
-      }
-
-      this.setData({
-        step: this.data.step + 1
-      }, callback)
-    }
-  },
-
-  prevStep: function () {
-    this.setData({
-      step: this.data.step - 1
-    })
-  },
-
-  goHome: function() {
-    const pages = getCurrentPages()
-    if (pages.length === 2) {
-      wx.navigateBack()
-    } else if (pages.length === 1) {
-      wx.redirectTo({
-        url: '../index/index',
-      })
-    } else {
-      wx.reLaunch({
-        url: '../index/index',
-      })
-    }
-  }
-
 })
+

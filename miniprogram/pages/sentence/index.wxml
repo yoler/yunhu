@@ -14,6 +14,10 @@
                 <view class="content">
                     <text class="title">{{item.data.hitokoto}}</text>
                     <text class="author">{{item.data.from_who || '佚名'}} - 《{{item.data.from}}》</text>
+                     <view class="menu-box">
+                        <view data-data="{{item.data}}" bindtap="copy">复制</view>
+                        <view data-data="{{item.data}}" bindtap="share">分享</view>
+                    </view>
                     <view class="ad" wx:if="{{index % 2 == 0 && index !== 0}}">
                         <ad unit-id="adunit-c60c8d2193b1aa75"></ad>
                     </view>
@@ -22,10 +26,7 @@
           </swiper-item>
         </block>
     </swiper>
-    <view class="bottom">
-        <text bindtap="switchHome">诗词</text>
-        <text bindtap="switchSentence">短句</text>
-        <text bindtap="switchPhoto">壁纸</text>
-    </view>
+    <bottom type="1"/>
+    <canvas class="shareCanvas" style='height: {{canvasHeight}}px' canvas-id="shareCanvas"></canvas>
 </view>
 

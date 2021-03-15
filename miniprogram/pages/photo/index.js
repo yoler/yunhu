@@ -106,18 +106,6 @@ Page({
       this.getPhoto()
     }
   },
-  switchHome() {
-    wx.switchTab({url: '/pages/home/index'})
-  },
-  switchPhoto() {
-    wx.switchTab({url: '/pages/photo/index'})
-  },
-  switchSentence() {
-    wx.switchTab({url: '/pages/sentence/index'})
-  },
-  switchMusic() {
-    wx.switchTab({url: '/pages/music/index'})
-  },
   photoPreview(e) {
     wx.previewImage({
       current: e.currentTarget.dataset.url, // 当前显示图片的http链接
