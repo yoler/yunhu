@@ -71,7 +71,7 @@ Page({
 
   getPhoto () {
     wx.request({
-      url: 'https://api.unsplash.com/photos/random?count=10&client_id=I34B29cGyFcghMtmEYd__KFl7yKi99KS-IAPS06Ub4c&w=300&h=600',
+      url: 'https://api.unsplash.com/photos/random?count=30&client_id=I34B29cGyFcghMtmEYd__KFl7yKi99KS-IAPS06Ub4c&w=300&h=600',
       header: {
         'content-type': 'application/json' // 默认值
       },
