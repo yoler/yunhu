@@ -11,7 +11,9 @@ Page({
       autoplay: false,
       interval: 2000,
       duration: 500,
-      canvasHeight: 800
+      canvasHeight: 800,
+      viewCount: 5,
+      showAd: false
   },
 
   /**
@@ -28,7 +30,9 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+    wx.showLoading({
+      title: '加载中',
+    })
   },
 
   /**
@@ -73,6 +77,17 @@ Page({
 
   },
 
+  closeAd () {
+    this.setData({
+      showAd: false
+    })
+  },
+  palyEnd () {
+    this.setData({
+      viewCount: this.data.viewCount + 5
+    })
+  },
+
   getPhoto () {
     wx.request({
       url: 'https://api.ixiaowai.cn/api/api.php?return=json', //仅为示例，并非真实的接口地址
@@ -89,6 +104,7 @@ Page({
             this.setData({
               list: [...this.data.list, {urls: {regular: res.data.imgurl}, data: result.data}]
             })
+            wx.hideLoading()
           },
         })
       }
@@ -98,7 +114,13 @@ Page({
 
   bindanimationfinish(event) {
     if (event.detail.current === this.data.list.length - 1) {
-      this.getPhoto()
+      if (this.data.list.length <= this.data.viewCount) {
+        this.getPhoto()
+      } else {
+        this.setData({
+          showAd: true
+        })
+      }
     }
   },
   copy(event) {

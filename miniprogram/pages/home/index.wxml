@@ -4,7 +4,7 @@
         vertical="{{vertical}}"
         autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}"
         bindanimationfinish="bindanimationfinish">
-        <block wx:for="{{list}}" wx:key="*this">
+        <block wx:for="{{list}}" wx:key="item.url">
           <swiper-item>
             <view class="swiper-item">
                 <view class="swiper-item-image">
@@ -14,22 +14,21 @@
                 <view class="content">
                     <text class="title">{{item.data.content}}</text>
                     <view class="tag-box">
-                        <text class="tag-item" wx:for="{{item.data.matchTags}}" wx:key="*this">{{item}}</text>
+                        <text class="tag-item" wx:for="{{item.data.matchTags}}" wx:key="item">{{item}}</text>
                     </view>
                     <text class="author">{{item.data.origin.author}} - 《{{item.data.origin.title}}》</text>
                     <view class="menu-box">
                         <view data-data="{{item.data}}" bindtap="copy">复制</view>
                         <view data-data="{{item.data}}" bindtap="share">分享</view>
                     </view>
-                    <view class="ad" wx:if="{{index % 3 == 0 && index !== 0}}">
-                        <ad unit-id="adunit-6302bcc311fe8b40"></ad>
-                    </view>
                 </view>
+                <view class='tip' wx:if="{{tips}}">上滑查看下一条</view>
             </view>
           </swiper-item>
         </block>
     </swiper>
     <bottom type="0"/>
     <canvas class="shareCanvas" style='height: {{canvasHeight}}px' canvas-id="shareCanvas"></canvas>
+    <adM wx:if="{{showAd}}" bind:onClose="closeAd" bind:palyEnd="palyEnd"/>
 </view>
 

@@ -4,7 +4,8 @@
     "pages/index/index",
     "pages/photo/index",
     "pages/sentence/index",
-    "pages/music/index"
+    "pages/music/index",
+    "pages/girl/index"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -30,6 +31,10 @@
       },
       {
         "pagePath": "pages/music/index",
+        "text": "其他"
+      },
+      {
+        "pagePath": "pages/girl/index",
         "text": "其他"
       }
     ]
