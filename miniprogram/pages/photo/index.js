@@ -82,6 +82,7 @@ Page({
     this.setData({
       viewCount: this.data.viewCount + 5
     })
+    this.this.getPhoto()
   },
 
   getPhoto () {
@@ -120,7 +121,7 @@ Page({
 
   bindanimationfinish(event) {
     if (event.detail.current === this.data.list.length - 1) {
-      if (this.data.list.length <= this.data.viewCount) {
+      if (event.detail.current < this.data.viewCount - 1) {
         this.getPhoto()
       } else {
         this.setData({
