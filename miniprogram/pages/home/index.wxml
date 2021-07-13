@@ -4,7 +4,7 @@
         vertical="{{vertical}}"
         autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}"
         bindanimationfinish="bindanimationfinish">
-        <block wx:for="{{list}}" wx:key="item.url">
+        <block wx:for="{{list}}" wx:key="url">
           <swiper-item>
             <view class="swiper-item">
                 <view class="swiper-item-image">
