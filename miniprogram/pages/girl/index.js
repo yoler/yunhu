@@ -35,7 +35,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    if (this.data.list.length === 0) {
+      this.getPhoto()
+    }
   },
 
   /**
@@ -82,39 +84,20 @@ Page({
     this.setData({
       viewCount: this.data.viewCount + 5
     })
-    this.this.getPhoto()
+    this.getPhoto()
   },
 
   getPhoto () {
     wx.request({
-      url: 'https://api.unsplash.com/photos/random?count=5&client_id=I34B29cGyFcghMtmEYd__KFl7yKi99KS-IAPS06Ub4c&w=300&h=600',
+      url: 'https://gank.io/api/v2/random/category/Girl/type/Girl/count/5',
       header: {
         'content-type': 'application/json' // 默认值
       },
       success: (res) => {
-        if (res.statusCode === 403) {
-          wx.request({
-            url: 'https://api.ixiaowai.cn/gqapi/gqapi.php?return=json', //仅为示例，并非真实的接口地址
-            header: {
-              'content-type': 'application/json' // 默认值
-            },
-            success: (res) => {
-              this.setData({
-                list: [...this.data.list, {urls: {regular: res.data.imgurl}}]
-              })
-              wx.hideLoading()
-            }
-          })
-        } else {
-          let list = []
-          res.data.forEach(item => {
-            list.push({urls: item.urls})
-          })
           this.setData({
-            list: [...this.data.list, ...list]
+            list: [...this.data.list, ...res.data.data]
           })
           wx.hideLoading()
-        }
       }
     })
   },

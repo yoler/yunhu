@@ -1,0 +1,41 @@
+.ad{
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.6);
+}
+.content{
+    background: #fff;
+    width: 250px;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 6px 5px 8px rgba(85, 61, 61, 0.1);
+}
+.title{
+    font-size: 16px;
+    color: #ea9c16;
+    text-align: center;
+}
+.btn-box{
+    margin: 30px auto 0;
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+}
+.btn-box > view{
+    padding: 6px 24px;
+    border-radius: 20px;
+    font-size: 14px;
+}
+.confirm{
+    background: #ea9c16;
+    color: #fff;
+}
+.cancel{
+    background: #dedede;
+}

@@ -18,9 +18,6 @@
                         <view data-data="{{item.data}}" bindtap="copy">复制</view>
                         <view data-data="{{item.data}}" bindtap="share">分享</view>
                     </view>
-                    <view class="ad" wx:if="{{index % 2 == 0 && index !== 0}}">
-                        <ad unit-id="adunit-c60c8d2193b1aa75"></ad>
-                    </view>
                 </view>
             </view>
           </swiper-item>
@@ -28,5 +25,6 @@
     </swiper>
     <bottom type="1"/>
     <canvas class="shareCanvas" style='height: {{canvasHeight}}px' canvas-id="shareCanvas"></canvas>
+    <adM wx:if="{{showAd}}" bind:onClose="closeAd" bind:palyEnd="palyEnd"/>
 </view>
 

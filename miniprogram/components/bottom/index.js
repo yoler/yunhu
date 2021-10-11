@@ -20,7 +20,10 @@ Component({
     },
     switchMusic() {
       wx.switchTab({url: '/pages/music/index'})
-    }
+    },
+    switchGirl() {
+      wx.switchTab({url: '/pages/girl/index'})
+    },
   }
   
 })

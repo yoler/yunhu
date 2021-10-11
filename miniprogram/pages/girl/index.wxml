@@ -4,15 +4,14 @@
         vertical="{{vertical}}"
         autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}"
         bindanimationfinish="bindanimationfinish">
-        <block wx:for="{{list}}" wx:key="*this">
+        <block wx:for="{{list}}" wx:key="url">
           <swiper-item>
             <view class="swiper-item">
-                <image mode="aspectFill" bindtap="photoPreview" data-url="{{item.urls.regular}}" src="{{item.urls.regular}}" />
+                <image mode="aspectFill" bindtap="photoPreview" data-url="https://images.weserv.nl/?url={{item.url}}" src="https://images.weserv.nl/?url={{item.url}}" />
             </view>
           </swiper-item>
         </block>
     </swiper>
-    <bottom type="3"/>
+    <bottom type="2"/>
     <adM wx:if="{{showAd}}" bind:onClose="closeAd" bind:palyEnd="palyEnd"/>
 </view>
-
