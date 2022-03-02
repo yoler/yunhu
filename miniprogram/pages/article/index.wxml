@@ -1,0 +1,34 @@
+<view class="container">
+    <swiper class="swiper"
+        indicator-dots="{{indicatorDots}}"
+        vertical="{{vertical}}"
+        autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}"
+        bindanimationfinish="bindanimationfinish">
+        <block wx:for="{{list}}" wx:key="*this">
+          <swiper-item>
+            <view class="swiper-item">
+                <view class="swiper-item-image">
+                    <!-- <image mode="aspectFill" src="{{item.urls.regular}}" /> -->
+                    <view class="mask"></view>
+                </view>
+                <view class="content" style="background: {{item.color}}">
+                    <text class="title" user-select="true">{{item.data.title}}</text>
+                    <text class="author" user-select="true">{{item.data.author || '佚名'}}</text>
+                    <view class="article">
+                        <rich-text user-select="true" nodes="{{item.data.content}}"></rich-text>
+                    </view>
+                    <view class='tip' wx:if="{{tips}}">右滑查看下一篇</view>
+                     <!-- <view class="menu-box">
+                        <view data-data="{{item.data}}" bindtap="copy">复制</view>
+                        <view data-data="{{item.data}}" bindtap="share">分享</view>
+                    </view> -->
+                </view>
+            </view>
+          </swiper-item>
+        </block>
+    </swiper>
+    <bottom type="4"/>
+    <canvas class="shareCanvas" style='height: {{canvasHeight}}px' canvas-id="shareCanvas"></canvas>
+    <adM wx:if="{{showAd}}" bind:onClose="closeAd" bind:palyEnd="palyEnd"/>
+</view>
+

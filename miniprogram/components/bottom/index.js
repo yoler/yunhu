@@ -24,6 +24,9 @@ Component({
     switchGirl() {
       wx.switchTab({url: '/pages/girl/index'})
     },
+    switchArticle() {
+      wx.switchTab({url: '/pages/article/index'})
+    },
   }
   
 })
