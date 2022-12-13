@@ -39,7 +39,8 @@
     width: 100%;
     min-height: 100%;
     z-index: 10;
-    padding-bottom: 120px;
+    padding-bottom: 30px;
+    font-family: 'KaiTi';
 }
 .title{
     display: block;
@@ -50,7 +51,7 @@
     line-height: 1.6;
     padding: 0 60px;
     user-select: text;
-    /* font-family: 'KaiTi'; */
+    font-family: 'KaiTi';
 }
 .tag-box{
     padding: 20px;

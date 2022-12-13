@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-      list: [],
+      list: [1],
       indicatorDots: false,
       vertical: true,
       autoplay: false,
@@ -19,25 +19,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getPhoto()
+    
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    wx.showLoading({
-      title: '加载中',
-    })
+    
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    if (this.data.list.length === 0) {
-      this.getPhoto()
-    }
+    
   },
 
   /**
@@ -103,16 +99,9 @@ Page({
   },
 
   bindanimationfinish(event) {
-    if (event.detail.current === this.data.list.length - 1) {
-      this.getPhoto()
-      // if (event.detail.current < this.data.viewCount - 1) {
-      //   this.getPhoto()
-      // } else {
-      //   this.setData({
-      //     showAd: true
-      //   })
-      // }
-    }
+    this.setData({
+      list: [...this.data.list, 1]
+    })
   },
   photoPreview(e) {
     wx.previewImage({

@@ -1,6 +1,5 @@
 {
   "usingComponents": {
-      "bottom": "/components/bottom/index",
       "adM": "/components/ad/index"
   },
   "navigationStyle": "custom"

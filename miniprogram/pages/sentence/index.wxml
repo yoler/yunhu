@@ -8,7 +8,7 @@
           <swiper-item>
             <view class="swiper-item">
                 <view class="swiper-item-image">
-                    <image mode="aspectFill" src="{{item.urls.regular}}" />
+                    <image mode="aspectFill" src="/images/bg2.jpg" />
                     <view class="mask"></view>
                 </view>
                 <view class="content">
@@ -23,7 +23,6 @@
           </swiper-item>
         </block>
     </swiper>
-    <bottom type="1"/>
     <canvas class="shareCanvas" style='height: {{canvasHeight}}px' canvas-id="shareCanvas"></canvas>
     <adM wx:if="{{showAd}}" bind:onClose="closeAd" bind:palyEnd="palyEnd"/>
 </view>

@@ -23,7 +23,7 @@ Page({
     this.getPhoto()
     setTimeout(() => {
       this.getPhoto()
-    }, 3000)
+    }, 1000)
   },
 
   /**
@@ -90,24 +90,16 @@ Page({
 
   getPhoto () {
     wx.request({
-      url: 'https://api.ixiaowai.cn/api/api.php?return=json', //仅为示例，并非真实的接口地址
+      url: 'https://v1.hitokoto.cn?c=a&c=b&c=d&c=h&c=k&c=j',
       header: {
         'content-type': 'application/json' // 默认值
       },
-      success: (res) => {
-        wx.request({
-          url: 'https://v1.hitokoto.cn?c=a&c=b&c=d&c=h&c=k&c=j',
-          header: {
-            'content-type': 'application/json' // 默认值
-          },
-          success: (result) => {
-            this.setData({
-              list: [...this.data.list, {urls: {regular: res.data.imgurl}, data: result.data}]
-            })
-            wx.hideLoading()
-          },
+      success: (result) => {
+        this.setData({
+          list: [...this.data.list, {data: result.data}]
         })
-      }
+        wx.hideLoading()
+      },
     })
     
   },

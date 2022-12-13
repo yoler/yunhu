@@ -1,7 +1,6 @@
 {
   "pages": [
     "pages/home/index",
-    "pages/index/index",
     "pages/photo/index",
     "pages/sentence/index",
     "pages/music/index",
@@ -12,27 +11,35 @@
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "云开发 QuickStart",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
-    "custom": true,
+    "custom": false,
+    "selectedColor": "#ff6c6d",
     "list": [
       {
         "pagePath": "pages/home/index",
-        "text": "首页"
+        "text": "诗词",
+        "iconPath": "images/1-modified.png",
+        "selectedIconPath": "images/1.png"
       },
       {
         "pagePath": "pages/sentence/index",
-        "text": "其他"
-      },
-      {
-        "pagePath": "pages/photo/index",
-        "text": "其他"
+        "text": "短句",
+        "iconPath": "images/2-modified.png",
+        "selectedIconPath": "images/2.png"
       },
       {
         "pagePath": "pages/article/index",
-        "text": "其他"
+        "text": "短文",
+        "iconPath": "images/3-modified.png",
+        "selectedIconPath": "images/3.png"
+      },
+      {
+        "pagePath": "pages/photo/index",
+        "text": "壁纸",
+        "iconPath": "images/4-modified.png",
+        "selectedIconPath": "images/4.png"
       }
     ]
   },

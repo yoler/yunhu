@@ -27,31 +27,7 @@ Page({
     this.getData(0)
     setTimeout(() => {
       this.getData(1)
-    }, 3000)
-
-
-    // const db = wx.cloud.database()
-    // // 查询当前用户所有的 counters
-    // db.collection('sentence')
-    // .aggregate()
-    // .sample({
-    //   size: 2
-    // })
-    // .end().then(res => {  
-    //   console.log(res)
-    // })
-    
-    
-    // .where({
-    //   _openid: this.data.openid
-    // }).get({
-    //   success: res => {
-        
-    //   },
-    //   fail: err => {
-       
-    //   }
-    // })
+    }, 1000)
   },
 
   /**
@@ -120,79 +96,15 @@ Page({
   },
 
   getData (index) {
-    if (index < this.data.imageList.length - 1) {
-      jinrishici.load(result => {
-        if (result.data.content.length > 12) {
-          result.data.content = result.data.content.replace('，', '，\n')
-        }
-        this.setData({
-          list: [...this.data.list, {url: this.data.imageList[index].urls.small, data: result.data}]
-        })
-        wx.hideLoading()
+    jinrishici.load(result => {
+      if (result.data.content.length > 12) {
+        result.data.content = result.data.content.replace('，', '，\n')
+      }
+      this.setData({
+        list: [...this.data.list, {data: result.data}]
       })
-    } else {
-      this.getPhoto().then(res => {
-        jinrishici.load(result => {
-          if (result.data.content.length > 12) {
-            result.data.content = result.data.content.replace('，', '，\n')
-          }
-          this.setData({
-            list: [...this.data.list, {url: this.data.imageList[index].urls.small, data: result.data}]
-          })
-          wx.hideLoading()
-        })
-      })
-    }
-    
-  },
-
-  getPhoto () {
-    let url = 'https://api.unsplash.com/photos/random?count=10&client_id=I34B29cGyFcghMtmEYd__KFl7yKi99KS-IAPS06Ub4c&w=300&h=600'
-    url = 'https://api.unsplash.com/photos/random?count=30&query=scenery&client_id=I34B29cGyFcghMtmEYd__KFl7yKi99KS-IAPS06Ub4c&orientation=portrait'
-    return new Promise((resolve, reject) => {
-      wx.request({
-        url: url,
-        header: {
-          'content-type': 'application/json' // 默认值
-        },
-        success: (res) => {
-          if (res.statusCode === 403) {
-            wx.request({
-              url: 'https://api.ixiaowai.cn/gqapi/gqapi.php?return=json', //仅为示例，并非真实的接口地址
-              header: {
-                'content-type': 'application/json' // 默认值
-              },
-              success: (res) => {
-                this.setData({
-                  imageList: [...this.data.imageList, {urls: {small: res.data.imgurl}}]
-                })
-                resolve()
-              }
-            })
-          } else {
-            this.setData({
-              imageList: [...this.data.imageList, ...res.data]
-            })
-            resolve()
-          }
-        },
-        fail: () => {
-          wx.request({
-            url: 'https://api.ixiaowai.cn/gqapi/gqapi.php?return=json', //仅为示例，并非真实的接口地址
-            header: {
-              'content-type': 'application/json' // 默认值
-            },
-            success: (res) => {
-              this.setData({
-                imageList: [...this.data.imageList, {urls: {small: res.data.imgurl}}]
-              })
-              resolve()
-            }
-          })
-        }
-      })
+      wx.hideLoading()
     })
-    
   },
 
   bindanimationfinish(event) {

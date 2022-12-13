@@ -7,11 +7,10 @@
         <block wx:for="{{list}}" wx:key="url">
           <swiper-item>
             <view class="swiper-item">
-                <image mode="aspectFill" bindtap="photoPreview" data-url="https://images.weserv.nl/?url={{item.url}}" src="https://images.weserv.nl/?url={{item.url}}" />
+                <image mode="aspectFill" bindtap="photoPreview" src="http://juapi.org/api/pcmnt.php" />
             </view>
           </swiper-item>
         </block>
     </swiper>
-    <bottom type="2"/>
     <adM wx:if="{{showAd}}" bind:onClose="closeAd" bind:palyEnd="palyEnd"/>
 </view>

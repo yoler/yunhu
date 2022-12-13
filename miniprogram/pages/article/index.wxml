@@ -11,7 +11,7 @@
                     <!-- <image mode="aspectFill" src="{{item.urls.regular}}" /> -->
                     <view class="mask"></view>
                 </view>
-                <view class="content" style="background: {{item.color}}">
+                <view class="content">
                     <text class="title" user-select="true">{{item.data.title}}</text>
                     <text class="author" user-select="true">{{item.data.author || '佚名'}}</text>
                     <view class="article">
@@ -27,8 +27,6 @@
           </swiper-item>
         </block>
     </swiper>
-    <bottom type="4"/>
-    <canvas class="shareCanvas" style='height: {{canvasHeight}}px' canvas-id="shareCanvas"></canvas>
     <adM wx:if="{{showAd}}" bind:onClose="closeAd" bind:palyEnd="palyEnd"/>
 </view>
 

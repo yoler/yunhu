@@ -12,7 +12,6 @@
           </swiper-item>
         </block>
     </swiper>
-    <bottom type="3"/>
     <adM wx:if="{{showAd}}" bind:onClose="closeAd" bind:palyEnd="palyEnd"/>
 </view>
 
