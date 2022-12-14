@@ -7,7 +7,7 @@ Page({
   data: {
       list: [],
       indicatorDots: false,
-      vertical: false,
+      vertical: true,
       autoplay: false,
       interval: 2000,
       duration: 500,

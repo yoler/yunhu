@@ -11,21 +11,21 @@
                     <image mode="aspectFill" src="/images/bg.jpg" />
                     <view class="mask"></view>
                 </view>
-                <view class="content">
+                <scroll-view scroll-y="true" class="content">
                     <text class="title">{{item.data.content}}</text>
                     <view class="tag-box">
                        标签： <text class="tag-item" wx:for="{{item.data.matchTags}}" wx:key="item">{{item}}</text>
                     </view>
-                    <view class="origin">
-                        <text class="author">《{{item.data.origin.title}}》· {{item.data.origin.author}}</text>
-                        <view class="origin-item" wx:for="{{item.data.origin.content}}" wx:key="item" wx:if="{{index < 6}}">{{item}}</view>
-                    </view>
-                    <view class="menu-box">
+                     <view class="menu-box">
                         <view data-data="{{item.data}}" bindtap="copy">复制</view>
                         <view data-data="{{item.data}}" bindtap="share">分享</view>
                     </view>
-                </view>
-                <view class='tip' wx:if="{{tips}}">上滑查看下一条</view>
+                    <view class="origin">
+                        <text class="author">《{{item.data.origin.title}}》· {{item.data.origin.author}}</text>
+                        <view class="origin-item" wx:for="{{item.data.origin.content}}" wx:key="item">{{item}}</view>
+                    </view>
+                    <view class='tip' wx:if="{{tips}}">上滑查看下一条</view>
+                </scroll-view>
             </view>
           </swiper-item>
         </block>

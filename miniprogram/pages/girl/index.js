@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-      list: [1],
+      list: [{urls: 'https://tuapi.eees.cc/api.php?category=meinv&px=m&type=302&r=' + Math.random()}, {urls: 'https://tuapi.eees.cc/api.php?category=meinv&px=m&type=302&r=' + Math.random()}],
       indicatorDots: false,
       vertical: true,
       autoplay: false,
@@ -99,14 +99,14 @@ Page({
   },
 
   bindanimationfinish(event) {
-    this.setData({
-      list: [...this.data.list, 1]
-    })
+    if (event.detail.current === this.data.list.length - 1) {
+      let urls = 'https://tuapi.eees.cc/api.php?category=meinv&px=m&type=302&r=' + Math.random()
+      if (this.data.list.length % 2 == 0) {
+        urls = 'https://www.hlapi.cn/api/sjmm1?r=' + Math.random()
+      }
+      this.setData({
+        list: [...this.data.list, {urls}]
+      })
+    }
   },
-  photoPreview(e) {
-    wx.previewImage({
-      current: e.currentTarget.dataset.url, // 当前显示图片的http链接
-      urls: [e.currentTarget.dataset.url] // 需要预览的图片http链接列表
-    })
-  }
 })

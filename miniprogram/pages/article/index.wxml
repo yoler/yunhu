@@ -8,21 +8,17 @@
           <swiper-item>
             <view class="swiper-item">
                 <view class="swiper-item-image">
-                    <!-- <image mode="aspectFill" src="{{item.urls.regular}}" /> -->
+                    <image mode="aspectFill" src="/images/bg.jpg" />
                     <view class="mask"></view>
                 </view>
-                <view class="content">
+                <scroll-view scroll-y="true" class="content">
                     <text class="title" user-select="true">{{item.data.title}}</text>
                     <text class="author" user-select="true">{{item.data.author || '佚名'}}</text>
                     <view class="article">
                         <rich-text user-select="true" nodes="{{item.data.content}}"></rich-text>
                     </view>
-                    <view class='tip' wx:if="{{tips}}">右滑查看下一篇</view>
-                     <!-- <view class="menu-box">
-                        <view data-data="{{item.data}}" bindtap="copy">复制</view>
-                        <view data-data="{{item.data}}" bindtap="share">分享</view>
-                    </view> -->
-                </view>
+                    <view class='tip' wx:if="{{tips}}">上滑查看下一篇</view>
+                </scroll-view>
             </view>
           </swiper-item>
         </block>

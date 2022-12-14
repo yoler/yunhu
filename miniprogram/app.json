@@ -36,10 +36,16 @@
         "selectedIconPath": "images/3.png"
       },
       {
-        "pagePath": "pages/photo/index",
-        "text": "壁纸",
+        "pagePath": "pages/girl/index",
+        "text": "妹子",
         "iconPath": "images/4-modified.png",
         "selectedIconPath": "images/4.png"
+      },
+      {
+        "pagePath": "pages/photo/index",
+        "text": "壁纸",
+        "iconPath": "images/5-modified.png",
+        "selectedIconPath": "images/5.png"
       }
     ]
   },

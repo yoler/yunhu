@@ -43,8 +43,7 @@
     font-size: 22px;
     color: #000;
     text-align: center;
-    padding: 16px;
-    margin-top: 30%;
+    padding: 160px 16px 16px;
     line-height: 1.6;
     font-family: 'KaiTi';
 }

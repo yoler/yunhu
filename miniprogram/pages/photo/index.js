@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-      list: [],
+      list: [{urls: 'https://tuapi.eees.cc/api.php?category=fengjing&px=m&type=302&r=' + Math.random()}, {urls: 'https://tuapi.eees.cc/api.php?category=fengjing&px=m&type=302&r=' + Math.random()}],
       indicatorDots: false,
       vertical: true,
       autoplay: false,
@@ -19,16 +19,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getPhoto()
+    // this.getPhoto()
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    wx.showLoading({
-      title: '加载中',
-    })
+    // wx.showLoading({
+    //   title: '加载中',
+    // })
   },
 
   /**
@@ -87,41 +87,30 @@ Page({
 
   getPhoto () {
     wx.request({
-      url: 'https://api.unsplash.com/photos/random?count=5&client_id=I34B29cGyFcghMtmEYd__KFl7yKi99KS-IAPS06Ub4c&w=300&h=600',
+      url: 'https://www.mxnzp.com/api/image/girl/list/random?app_id=fsehmotitksj8mqq&app_secret=MEhZMitYNGlsVVVRVEt6bjN1VVZnZz09',
       header: {
         'content-type': 'application/json' // 默认值
       },
       success: (res) => {
-        if (res.statusCode === 403) {
-          wx.request({
-            url: 'https://api.ixiaowai.cn/gqapi/gqapi.php?return=json', //仅为示例，并非真实的接口地址
-            header: {
-              'content-type': 'application/json' // 默认值
-            },
-            success: (res) => {
-              this.setData({
-                list: [...this.data.list, {urls: {regular: res.data.imgurl}}]
-              })
-              wx.hideLoading()
-            }
-          })
-        } else {
           let list = []
-          res.data.forEach(item => {
-            list.push({urls: item.urls})
+          res.data.data.forEach(item => {
+            list.push({urls: item.imageUrl})
           })
           this.setData({
             list: [...this.data.list, ...list]
           })
           wx.hideLoading()
-        }
       }
     })
   },
 
   bindanimationfinish(event) {
     if (event.detail.current === this.data.list.length - 1) {
-      this.getPhoto()
+      this.setData({
+        list: [...this.data.list, {urls: 'https://tuapi.eees.cc/api.php?category=fengjing&px=m&type=302&r=' + Math.random()}]
+      })
+      
+      // this.getPhoto()
       // if (event.detail.current < this.data.viewCount - 1) {
       //   this.getPhoto()
       // } else {
